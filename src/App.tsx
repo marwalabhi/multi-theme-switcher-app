@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Provider } from 'react-redux';
 import Body from './components/Body/Body';

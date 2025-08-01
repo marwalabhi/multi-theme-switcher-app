@@ -4,9 +4,9 @@ import Header from '../Header/Header';
 
 const Body = () => {
   return (
-    <div className="body-layout">
+    <div className="font-inter">
       <Header />
-      <main className="body-content">
+      <main className="">
         <h1>Welcome to the Body Component</h1>
         <p>This is where the main content will be displayed.</p>
         <Outlet />
