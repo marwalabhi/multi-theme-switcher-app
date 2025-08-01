@@ -1,12 +1,24 @@
 import { useState } from 'react';
 
-import './App.css';
+import { createBrowserRouter, RouterProvider } from 'react-router';
+import { Provider } from 'react-redux';
+import Body from './components/Body/Body';
+import MainContainer from './components/Body/MainContainer/MainContainer';
+
+const appRouter = createBrowserRouter([
+  {
+    path: '/',
+    Component: Body,
+    children: [{ index: true, Component: MainContainer }, {}],
+  },
+]);
 
 function App() {
   return (
-    <>
-      <div></div>
-    </>
+    // <Provider store={store}>
+    <RouterProvider router={appRouter} />
+
+    // </Provider>
   );
 }
 
