@@ -14,7 +14,6 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = () => {
   const currentTheme = useSelector((state: RootState) => state.theme.currentTheme);
-  // const dispatch = useDispatch();
 
   return (
     <header className="bg-base-50/50 dark:bg-base-950/50 fixed z-10 w-full backdrop-blur-xl">
