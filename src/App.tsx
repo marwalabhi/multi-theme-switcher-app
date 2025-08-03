@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router';
 import { Provider } from 'react-redux';
 import Body from './components/Body/Body';
 import MainContainer from './components/Body/MainContainer/MainContainer';
+import { store } from './utils/store';
 
 const appRouter = createBrowserRouter([
   {
@@ -15,10 +16,9 @@ const appRouter = createBrowserRouter([
 
 function App() {
   return (
-    // <Provider store={store}>
-    <RouterProvider router={appRouter} />
-
-    // </Provider>
+    <Provider store={store}>
+      <RouterProvider router={appRouter} />
+    </Provider>
   );
 }
 

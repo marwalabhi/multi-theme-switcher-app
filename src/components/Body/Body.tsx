@@ -4,11 +4,9 @@ import Header from '../Header/Header';
 
 const Body = () => {
   return (
-    <div className="font-inter">
+    <div className="font-inter flex min-h-screen flex-col">
       <Header />
-      <main className="">
-        <h1>Welcome to the Body Component</h1>
-        <p>This is where the main content will be displayed.</p>
+      <main className="mx-auto mt-16 max-w-7xl px-6 py-8">
         <Outlet />
       </main>
     </div>

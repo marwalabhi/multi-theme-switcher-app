@@ -1,6 +1,11 @@
 import React from 'react';
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import { Menu, MenuButton, Transition, MenuItem, MenuItems } from '@headlessui/react';
+import { motion, AnimatePresence } from 'framer-motion';
+
 import logo from '../../assets/logo.png';
+import ThemeOption from '../ThemeOption/ThemeOption';
+import { useDispatch, useSelector } from 'react-redux';
+import type { RootState } from '../../utils/store';
 
 interface HeaderProps {
   title?: string;
@@ -8,6 +13,9 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ title = 'Multi Theme Switcher', children }) => {
+  const currentTheme = useSelector((state: RootState) => state.theme.currentTheme);
+  const dispatch = useDispatch();
+
   return (
     <header className="bg-base-50/50 dark:bg-base-950/50 fixed z-10 w-full backdrop-blur-xl">
       <nav className="border-base relative container mx-auto flex h-14 flex-wrap items-center justify-start gap-4 border-b px-0 lg:gap-8">
@@ -42,8 +50,34 @@ const Header: React.FC<HeaderProps> = ({ title = 'Multi Theme Switcher', childre
             </a>
           </ul>
         </div>
-        <div className="ml-auto flex gap-2"></div>
-        <button className="group text-base-600 inline-flex items-center gap-2 rounded-full bg-transparent p-2 text-sm duration-200 ease-in-out hover:scale-95 md:hidden"></button>
+        <div className="mr-4 ml-auto flex gap-2">
+          <div className="theme-options">
+            <ThemeOption theme="dark" />
+            <ThemeOption theme="light" />
+            <ThemeOption theme="purple" />
+          </div>
+          <Menu as="div" className="relative inline-block text-left">
+            <MenuButton className="rounded bg-gray-200 px-3 py-2 dark:bg-gray-700">
+              {currentTheme}
+            </MenuButton>
+            <Transition>
+              <MenuItems className="absolute mt-2 rounded bg-white shadow-md dark:bg-gray-800">
+                {['light', 'dark', 'colorful'].map((t) => (
+                  <MenuItem key={t}>
+                    {({ active }) => (
+                      <button
+                        className={`block w-full px-4 py-2 text-left ${active ? 'bg-blue-100 dark:bg-blue-900' : ''}`}
+                        // onClick={() => setTheme(t)}
+                      >
+                        {t.charAt(0).toUpperCase() + t.slice(1)}
+                      </button>
+                    )}
+                  </MenuItem>
+                ))}
+              </MenuItems>
+            </Transition>
+          </Menu>
+        </div>
       </nav>
     </header>
   );
