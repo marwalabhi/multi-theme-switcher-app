@@ -1,5 +1,5 @@
 import React from 'react';
-import raj from '../../assets/rajasthan.png';
+// import raj from '../../assets/rajasthan.png';
 import fashion from '../../assets/clothe_brand.png';
 
 const Banner: React.FC = () => (

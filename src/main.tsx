@@ -6,8 +6,8 @@ import ErrorBoundary from './components/Error/ErrorBoundary.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <ErrorBoundary fallback={<h1>Oops! something went wrong</h1>}>
-    {/* <StrictMode> */}
-    <App />
-    {/* </StrictMode> */}
+    <StrictMode>
+      <App />
+    </StrictMode>
   </ErrorBoundary>
 );

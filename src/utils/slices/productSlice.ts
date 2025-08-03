@@ -4,10 +4,21 @@ export const fetchProducts = createAsyncThunk('products/fetch', async () => {
   const res = await fetch('https://dummyjson.com/products');
   return await res.json();
 });
+interface ProductState {
+  data: any[];
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: ProductState = {
+  data: [],
+  loading: false,
+  error: null,
+};
 
 const productSlice = createSlice({
   name: 'products',
-  initialState: { items: [], loading: false, error: null },
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -15,11 +26,12 @@ const productSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.items = action.payload;
+        state.data = action.payload.products;
         state.loading = false;
+        state.error = null;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
-        state.error = action.error.message;
+        state.error = action.error.message ?? 'Failed to fetch products';
         state.loading = false;
       });
   },

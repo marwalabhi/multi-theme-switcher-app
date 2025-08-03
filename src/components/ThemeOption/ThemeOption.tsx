@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ThemeOption = ({ theme }: any) => {
   const setTheme = () => {
     document.querySelector('body')?.setAttribute('data-theme', theme);

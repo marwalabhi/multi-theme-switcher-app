@@ -1,10 +1,10 @@
 import React from 'react';
 import { Menu, MenuButton, Transition, MenuItem, MenuItems } from '@headlessui/react';
-import { motion, AnimatePresence } from 'framer-motion';
+// import { motion, AnimatePresence } from 'framer-motion';
 
 import logo from '../../assets/logo.png';
 import ThemeOption from '../ThemeOption/ThemeOption';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import type { RootState } from '../../utils/store';
 
 interface HeaderProps {
@@ -12,9 +12,9 @@ interface HeaderProps {
   children?: React.ReactNode;
 }
 
-const Header: React.FC<HeaderProps> = ({ title = 'Multi Theme Switcher', children }) => {
+const Header: React.FC<HeaderProps> = () => {
   const currentTheme = useSelector((state: RootState) => state.theme.currentTheme);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   return (
     <header className="bg-base-50/50 dark:bg-base-950/50 fixed z-10 w-full backdrop-blur-xl">
