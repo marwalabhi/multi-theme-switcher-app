@@ -1,1 +1,35 @@
 /* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --primary-background-color: #fff;
+  --secondary-background-color: #f7f7f7;
+
+  --primary-text-color: #000;
+  --secondary-text-color: #4b4c53;
+}
+
+[data-theme='dark'] {
+  --primary-background-color: #100d0d;
+  --secondary-background-color: #343030;
+
+  --primary-text-color: #8d8888;
+  --secondary-text-color: #a1a2a7;
+}
+[data-theme='purple'] {
+  --primary-background-color: #d88ac3;
+  --secondary-background-color: #dc8181;
+
+  --primary-text-color: #482020;
+  --secondary-text-color: #a1a2a7;
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant light (&:where([data-theme=light], [data-theme=light] *));
+@custom-variant purple (&:where([data-theme=purple], [data-theme=purple] *));
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+  --color-bg: var(--primary-background-color);
+}
